@@ -76,11 +76,11 @@ public class Offer {
 	@ApiResourceProperty(ignored = AnnotationBoolean.TRUE)
 	private GeoPt location;
 
-	@Index
-	private float latitude;
+	// @Index
+	// private float latitude;
 
-	@Index
-	private float longitude;
+	// @Index
+	// private float longitude;
 
 	/**
 	 * The offer date of this offer.
@@ -280,9 +280,10 @@ public class Offer {
 
 		this.providerName = provider.getName();
 		// this.location = getProvider().getLocation();
-		this.latitude = provider.getLatitude();
-		this.longitude = provider.getLongitude();
-		this.location = new GeoPt(this.latitude, this.longitude);
+		// this.latitude = provider.getLatitude();
+		// this.longitude = provider.getLongitude();
+		this.location = new GeoPt(provider.getLatitude(),
+				provider.getLongitude());
 
 		this.offerDateText = formattedDateText(this.offerDate);
 
@@ -340,13 +341,11 @@ public class Offer {
 		return this.cuisine;
 	}
 
-	public float getLatitude() {
-		return this.latitude;
-	}
-
-	public float getLongitude() {
-		return this.longitude;
-	}
+	/*
+	 * public float getLatitude() { return this.latitude; }
+	 *
+	 * public float getLongitude() { return this.longitude; }
+	 */
 
 	@ApiResourceProperty(ignored = AnnotationBoolean.TRUE)
 	public String getOfferDateText() {

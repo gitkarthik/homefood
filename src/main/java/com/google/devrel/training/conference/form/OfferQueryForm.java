@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import com.google.api.server.spi.config.AnnotationBoolean;
 import com.google.api.server.spi.config.ApiResourceProperty;
+import com.google.devrel.training.conference.form.OfferForm.Cuisine;
 
 /**
  * A simple Java object (POJO) representing a query options for Offer.
@@ -22,7 +23,8 @@ public class OfferQueryForm {
 	private float longitude;
 	private Date offerDate = new Date();
 
-	// private final Cuisine cuisine;
+	private Cuisine cuisine;
+
 	private int distanceInKm = 10; // default to 10 km
 	// private final SortField sortField;
 
@@ -32,16 +34,15 @@ public class OfferQueryForm {
 	@ApiResourceProperty(ignored = AnnotationBoolean.TRUE)
 	private static final Format sdf = new SimpleDateFormat("YYYY-MM-dd");
 
+	private SortField sortField = SortField.DISTANCE;
+
 	// default constructor
 	public OfferQueryForm() {
 	}
 
 	public OfferQueryForm(final float latitude, final float longitude,
-			final int distanceInKm, final Date offerDate /*
-														 * , final Cuisine
-														 * cuisine, final
-														 * SortField sortField
-														 */) {
+			final int distanceInKm, final Date offerDate,
+			final Cuisine cuisine, final SortField sortField) {
 
 		// default sort by distance - ascending order
 
@@ -52,14 +53,15 @@ public class OfferQueryForm {
 			this.offerDate = offerDate;
 		}
 
-		// this.cuisine = cuisine;
+		this.cuisine = cuisine;
 
 		if (distanceInKm > 0) {
 			this.distanceInKm = distanceInKm;
 		}
 
-		// this.sortField = sortField;
-
+		if (sortField != null) {
+			this.sortField = sortField;
+		}
 	}
 
 	public float getLatitude() {
@@ -74,17 +76,17 @@ public class OfferQueryForm {
 		return this.offerDate;
 	}
 
-	// public Cuisine getCuisine() {
-	// return this.cuisine;
-	// }
+	public Cuisine getCuisine() {
+		return this.cuisine;
+	}
 
 	public int getDistanceInKm() {
 		return this.distanceInKm;
 	}
 
-	// public SortField getSortField() {
-	// return this.sortField;
-	// }
+	public SortField getSortField() {
+		return this.sortField;
+	}
 
 	@ApiResourceProperty(ignored = AnnotationBoolean.TRUE)
 	public float getMinLatitude() {

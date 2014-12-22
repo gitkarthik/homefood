@@ -4,7 +4,7 @@
 
 
 
-	<!-- Used 1 time in query history - - >
+    <!-- Used 1 time in query history - - >
     <datastore-index kind="Conference" ancestor="true" source="auto">
         <property name="name" direction="asc"/>
     </datastore-index>
@@ -109,12 +109,12 @@
     </datastore-index>
 
   -->
-	<datastore-index kind="Provider" ancestor="true" source="auto">
+    <datastore-index kind="Provider" ancestor="true" source="auto">
         <property name="name" direction="asc"/>
     </datastore-index>
 
    <!--
-    
+
     <datastore-index kind="Offer" ancestor="true" source="auto">
         <property name="title" direction="asc"/>
     </datastore-index>
@@ -126,22 +126,20 @@
         <property name="longitude" direction="asc"/>
     </datastore-index>
 
-      -->
-
-
    <datastore-index kind="Offer" ancestor="false" source="auto">
         <property name="offerDateNumber" direction="asc"/>
         <property name="latitude" direction="asc"/>
     </datastore-index>
-    
+
      <datastore-index kind="Offer" ancestor="false" source="auto">
         <property name="offerDateNumber" direction="asc"/>
         <property name="longitude" direction="asc"/>
     </datastore-index>
 
+-->
     <datastore-index kind="Offer" ancestor="false" source="auto">
         <property name="offerDateNumber" direction="asc"/>
         <property name="location" direction="asc"/>
     </datastore-index>
-    
+
 </datastore-indexes>

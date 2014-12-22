@@ -126,6 +126,9 @@
         <property name="longitude" direction="asc"/>
     </datastore-index>
 
+      -->
+
+
    <datastore-index kind="Offer" ancestor="false" source="auto">
         <property name="offerDateNumber" direction="asc"/>
         <property name="latitude" direction="asc"/>
@@ -136,7 +139,6 @@
         <property name="longitude" direction="asc"/>
     </datastore-index>
 
--->
     <datastore-index kind="Offer" ancestor="false" source="auto">
         <property name="offerDateNumber" direction="asc"/>
         <property name="location" direction="asc"/>

@@ -44,7 +44,7 @@ import com.googlecode.objectify.cmd.Query;
 @Api(name = "homefood", version = "v1", scopes = { Constants.EMAIL_SCOPE }, clientIds = {
 		Constants.WEB_CLIENT_ID, Constants.ANDROID_CLIENT_ID,
 		Constants.API_EXPLORER_CLIENT_ID }, audiences = { Constants.ANDROID_AUDIENCE }, description = "Home Food API for creating and querying offers,"
-				+ " and for creating and getting Providers")
+		+ " and for creating and getting Providers")
 public class HomeFoodApi {
 
 	private static final Logger LOG = Logger.getLogger(HomeFoodApi.class
@@ -155,7 +155,7 @@ public class HomeFoodApi {
 		}
 
 		private ResultType getResult() throws NotFoundException,
-		ForbiddenException, ConflictException {
+				ForbiddenException, ConflictException {
 			if (this.exception instanceof NotFoundException) {
 				throw (NotFoundException) this.exception;
 			}
@@ -308,8 +308,8 @@ public class HomeFoodApi {
 	public Provider updateProvider(final User user,
 			final ProviderForm providerForm,
 			@Named("websafeProviderKey") final String websafeProviderKey)
-					throws UnauthorizedException, NotFoundException,
-					ForbiddenException, ConflictException {
+			throws UnauthorizedException, NotFoundException,
+			ForbiddenException, ConflictException {
 		// If not signed in, throw a 401 error.
 		if (user == null) {
 			throw new UnauthorizedException("Authorization required");
@@ -362,7 +362,7 @@ public class HomeFoodApi {
 	@ApiMethod(name = "getProvider", path = "provider/{websafeProviderKey}", httpMethod = HttpMethod.GET)
 	public Provider getProvider(
 			@Named("websafeProviderKey") final String websafeProviderKey)
-					throws NotFoundException {
+			throws NotFoundException {
 		final Key<Provider> providerKey = Key.create(websafeProviderKey);
 		final Provider provider = ofy().load().key(providerKey).now();
 		if (provider == null) {
@@ -520,8 +520,8 @@ public class HomeFoodApi {
 	@ApiMethod(name = "updateOffer", path = "offer/{websafeOfferKey}", httpMethod = HttpMethod.PUT)
 	public Offer updateOffer(final User user, final OfferForm offerForm,
 			@Named("websafeOfferKey") final String websafeOfferKey)
-					throws UnauthorizedException, NotFoundException,
-					ForbiddenException, ConflictException {
+			throws UnauthorizedException, NotFoundException,
+			ForbiddenException, ConflictException {
 		// If not signed in, throw a 401 error.
 		if (user == null) {
 			throw new UnauthorizedException("Authorization required");
@@ -626,7 +626,7 @@ public class HomeFoodApi {
 					.hasNext();) {
 				final Offer offer = iterator.next();
 				if ((offer.getCuisine() != null)
-						&& (offer.getCuisine() == offerQueryForm.getCuisine())) {
+						&& (offer.getCuisine() != offerQueryForm.getCuisine())) {
 					iterator.remove();
 				}
 			}
